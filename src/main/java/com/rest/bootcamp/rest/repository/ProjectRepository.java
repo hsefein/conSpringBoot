@@ -2,6 +2,7 @@ package com.rest.bootcamp.rest.repository;
 
 import com.rest.bootcamp.rest.model.Project;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
