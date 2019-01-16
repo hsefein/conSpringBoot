@@ -7,7 +7,7 @@ public class Task
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer task_id;
+    private Long task_id;
     private String task_name;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -16,15 +16,16 @@ public class Task
 
     public Task(){}
 
-    public Task(String task_name) {
+    public Task(String task_name, Project project) {
         this.task_name = task_name;
+        this.project = project;
     }
 
-    public Integer getTask_id() {
+    public Long getTask_id() {
         return task_id;
     }
 
-    public void setTask_id(Integer task_id) {
+    public void setTask_id(Long task_id) {
         this.task_id = task_id;
     }
 

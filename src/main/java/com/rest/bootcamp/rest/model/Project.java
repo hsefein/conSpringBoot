@@ -3,14 +3,13 @@ package com.rest.bootcamp.rest.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Project
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer project_id;
+    private Long project_id;
     private String project_name;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
@@ -18,11 +17,15 @@ public class Project
 
     public Project(){}
 
-    public Integer getProject_id() {
+    public Project(String project_name) {
+        this.project_name = project_name;
+    }
+
+    public Long getProject_id() {
         return project_id;
     }
 
-    public void setProject_id(Integer project_id) {
+    public void setProject_id(Long project_id) {
         this.project_id = project_id;
     }
 
