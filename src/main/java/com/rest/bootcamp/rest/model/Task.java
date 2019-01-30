@@ -1,24 +1,29 @@
-package com.rest.bootcamp.rest.model;
+package com.connect.connect2.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Task
-{
+public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long task_id;
-    private String task_name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
-    private Project project;
+    private String name;
 
-    public Task(){}
+    private String description;
 
-    public Task(String task_name, Project project) {
-        this.task_name = task_name;
-        this.project = project;
+    @OneToMany(mappedBy = "task", fetch = FetchType.LAZY)
+    private List<Detail> detailList = new ArrayList<>();
+
+    public Task() { }
+
+    public Task(String name, String description, List<Detail> detailList) {
+        this.name = name;
+        this.description = description;
+        this.detailList = detailList;
     }
 
     public Long getTask_id() {
@@ -29,28 +34,37 @@ public class Task
         this.task_id = task_id;
     }
 
-    public String getTask_name() {
-        return task_name;
+    public String getName() {
+        return name;
     }
 
-    public void setTask_name(String task_name) {
-        this.task_name = task_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Project getProject() {
-        return project;
+    public String getDescription() {
+        return description;
     }
 
-    public void setProject(Project project) {
-        this.project = project;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Detail> getDetailList() {
+        return detailList;
+    }
+
+    public void setDetailList(List<Detail> detailList) {
+        this.detailList = detailList;
     }
 
     @Override
     public String toString() {
         return "Task{" +
                 "task_id=" + task_id +
-                ", task_name='" + task_name + '\'' +
-                ", project=" + project +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", detailList=" + detailList +
                 '}';
     }
 }

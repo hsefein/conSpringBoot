@@ -1,24 +1,26 @@
-package com.rest.bootcamp.rest.model;
+package com.connect.connect2.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Project
-{
+public class Project {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long project_id;
-    private String project_name;
+
+    private String name;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
-    private List<Task> taskList = new ArrayList<>();
+    private List<Detail> detailList = new ArrayList<>();
 
-    public Project(){}
+    public Project() { }
 
-    public Project(String project_name) {
-        this.project_name = project_name;
+    public Project(String name, List<Detail> detailList) {
+        this.name = name;
+        this.detailList = detailList;
     }
 
     public Long getProject_id() {
@@ -29,28 +31,28 @@ public class Project
         this.project_id = project_id;
     }
 
-    public String getProject_name() {
-        return project_name;
+    public String getName() {
+        return name;
     }
 
-    public void setProject_name(String project_name) {
-        this.project_name = project_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public List<Task> getTaskList() {
-        return taskList;
+    public List<Detail> getDetailList() {
+        return detailList;
     }
 
-    public void setTaskList(List<Task> taskList) {
-        this.taskList = taskList;
+    public void setDetailList(List<Detail> detailList) {
+        this.detailList = detailList;
     }
 
     @Override
     public String toString() {
         return "Project{" +
                 "project_id=" + project_id +
-                ", project_name='" + project_name + '\'' +
-                ", taskList=" + taskList +
+                ", name='" + name + '\'' +
+                ", detailList=" + detailList +
                 '}';
     }
 }
