@@ -2,6 +2,7 @@ package com.connect.connect2.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Detail
@@ -10,8 +11,8 @@ public class Detail
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long projectdetail_id;
 
-    private LocalDate Start_Date;
-    private LocalDate End_Date;
+    private Date startdate;
+    private Date enddate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
@@ -32,9 +33,9 @@ public class Detail
 
     public Detail() { }
 
-    public Detail(LocalDate start_Date, LocalDate end_Date, Project project, Task task, Owner owner, Bidder bidder) {
-        Start_Date = start_Date;
-        End_Date = end_Date;
+    public Detail(Date startdate, Date enddate, Project project, Task task, Owner owner, Bidder bidder) {
+        this.startdate = startdate;
+        this.enddate = enddate;
         this.project = project;
         this.task = task;
         this.owner = owner;
@@ -49,20 +50,20 @@ public class Detail
         this.projectdetail_id = projectdetail_id;
     }
 
-    public LocalDate getStart_Date() {
-        return Start_Date;
+    public Date getStartdate() {
+        return startdate;
     }
 
-    public void setStart_Date(LocalDate start_Date) {
-        Start_Date = start_Date;
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
     }
 
-    public LocalDate getEnd_Date() {
-        return End_Date;
+    public Date getEnddate() {
+        return enddate;
     }
 
-    public void setEnd_Date(LocalDate end_Date) {
-        End_Date = end_Date;
+    public void setEnddate(Date enddate) {
+        this.enddate = enddate;
     }
 
     public Project getProject() {
@@ -101,8 +102,8 @@ public class Detail
     public String toString() {
         return "Detail{" +
                 "projectdetail_id=" + projectdetail_id +
-                ", Start_Date=" + Start_Date +
-                ", End_Date=" + End_Date +
+                ", startdate=" + startdate +
+                ", enddate=" + enddate +
                 ", project=" + project +
                 ", task=" + task +
                 ", owner=" + owner +
