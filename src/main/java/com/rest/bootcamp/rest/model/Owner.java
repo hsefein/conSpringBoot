@@ -11,32 +11,32 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long owner_id;
 
-    private String owner_name;
+    private String name;
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Detail> detailList = new ArrayList<>();
 
     public Owner() { }
 
-    public Owner(String projectOwner_name, List<Detail> detailList) {
-        this.owner_name = projectOwner_name;
+    public Owner(String name, List<Detail> detailList) {
+        this.name = name;
         this.detailList = detailList;
     }
 
-    public Long getProjectOwner_id() {
+    public Long getOwner_id() {
         return owner_id;
     }
 
-    public void setProjectOwner_id(Long projectOwner_id) {
-        this.owner_id = projectOwner_id;
+    public void setOwner_id(Long owner_id) {
+        this.owner_id = owner_id;
     }
 
-    public String getProjectOwner_name() {
-        return owner_name;
+    public String getName() {
+        return name;
     }
 
-    public void setProjectOwner_name(String projectOwner_name) {
-        this.owner_name = projectOwner_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Detail> getDetailList() {
@@ -50,8 +50,8 @@ public class Owner {
     @Override
     public String toString() {
         return "Owner{" +
-                "projectOwner_id=" + owner_id +
-                ", projectOwner_name='" + owner_name + '\'' +
+                "owner_id=" + owner_id +
+                ", name='" + name + '\'' +
                 ", detailList=" + detailList +
                 '}';
     }

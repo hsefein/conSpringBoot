@@ -11,32 +11,32 @@ public class Bidder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bidder_id;
 
-    private String bidder_name;
+    private String name;
 
     @OneToMany(mappedBy = "bidder", fetch = FetchType.LAZY)
     private List<Detail> detailList = new ArrayList<>();
 
     public Bidder() { }
 
-    public Bidder(String taskBidder_name, List<Detail> detailList) {
-        this.bidder_name = taskBidder_name;
+    public Bidder(String name, List<Detail> detailList) {
+        this.name = name;
         this.detailList = detailList;
     }
 
-    public Long getTaskBidder_id() {
+    public Long getBidder_id() {
         return bidder_id;
     }
 
-    public void setTaskBidder_id(Long taskBidder_id) {
-        this.bidder_id = taskBidder_id;
+    public void setBidder_id(Long bidder_id) {
+        this.bidder_id = bidder_id;
     }
 
-    public String getTaskBidder_name() {
-        return bidder_name;
+    public String getName() {
+        return name;
     }
 
-    public void setTaskBidder_name(String taskBidder_name) {
-        this.bidder_name = taskBidder_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Detail> getDetailList() {
@@ -50,8 +50,8 @@ public class Bidder {
     @Override
     public String toString() {
         return "Bidder{" +
-                "taskBidder_id=" + bidder_id +
-                ", taskBidder_name='" + bidder_name + '\'' +
+                "bidder_id=" + bidder_id +
+                ", name='" + name + '\'' +
                 ", detailList=" + detailList +
                 '}';
     }
