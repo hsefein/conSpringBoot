@@ -11,5 +11,5 @@ import java.util.List;
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 @RepositoryRestController
 public interface BidderRepository extends CrudRepository<Bidder, Long> {
-//    List<Bidder> findByName (@Param(value = "bidder_name") String bidder_name);
+    List<Bidder> findByName (@Param(value = "bidder_name") String bidder_name);
 }
