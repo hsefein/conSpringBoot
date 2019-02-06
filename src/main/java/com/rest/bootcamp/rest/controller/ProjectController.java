@@ -1,18 +1,17 @@
-package com.rest.bootcamp.rest.controller;
+package com.connect.connect2.controller;
 
-import com.rest.bootcamp.rest.model.Project;
-import com.rest.bootcamp.rest.repository.ProjectRepository;
+import com.connect.connect2.model.Project;
+import com.connect.connect2.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping(path = "/project")
-public class ProjectController
-{
+public class ProjectController {
+
     @Autowired
     private ProjectRepository projectRepository;
 
@@ -21,5 +20,4 @@ public class ProjectController
     {
         return projectRepository.findAll();
     }
-
 }
