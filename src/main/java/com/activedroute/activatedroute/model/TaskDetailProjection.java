@@ -4,8 +4,8 @@ import org.springframework.data.rest.core.config.Projection;
 
 import java.util.List;
 
-@Projection(name = "detail", types = {Person.class})
-public interface PersonDetailProjection {
+@Projection(name = "detail", types = {Task.class})
+public interface TaskDetailProjection {
     Long getId();
     String getName();
     List<PersonTask> getPersonTasks();

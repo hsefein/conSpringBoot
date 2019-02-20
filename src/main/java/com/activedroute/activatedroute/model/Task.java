@@ -2,35 +2,29 @@ package com.activedroute.activatedroute.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "Person")
+@Table(name = "Task")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Person {
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Person_Id")
+    @Column(name = "Task_Id")
     private Long id;
 
     @Column(name = "Name", nullable = false)
     private String name;
 
-    @Column(name = "DoB")
-    private LocalDate doB;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+    @OneToMany(mappedBy = "task", fetch = FetchType.LAZY)
     private List<PersonTask> personTasks;
 
-    public Person() { }
+    public Task() { }
 
-    public Person(String name, LocalDate doB, List<PersonTask> personTasks) {
+    public Task(String name, List<PersonTask> personTasks) {
         this.name = name;
-        this.doB = doB;
         this.personTasks = personTasks;
     }
 
@@ -50,14 +44,6 @@ public class Person {
         this.name = name;
     }
 
-    public LocalDate getDoB() {
-        return doB;
-    }
-
-    public void setDoB(LocalDate doB) {
-        this.doB = doB;
-    }
-
     public List<PersonTask> getPersonTasks() {
         return personTasks;
     }
@@ -68,10 +54,9 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Task{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", doB=" + doB +
                 ", personTasks=" + personTasks +
                 '}';
     }
